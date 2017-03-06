@@ -76,7 +76,7 @@ class Colors(Enum):
 def myEnum():
     print(list(Colors))
     for color in Colors:
-        print(color, ' has the value ', color.value)
+        print(color.name, ' has the value ', color.value)
 
 
 if __name__ == '__main__':
