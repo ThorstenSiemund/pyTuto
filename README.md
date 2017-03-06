@@ -1,3 +1,3 @@
 # Python Tutorial
 
-written for Python 3.5
+written for Python 3.5.2
