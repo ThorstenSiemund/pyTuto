@@ -1,5 +1,6 @@
 from pprint import pprint
 from functools import wraps
+from enum import Enum, unique
 import logging
 import time
 
@@ -20,7 +21,7 @@ def timethis(func):
 
 def heading(funct):
     '''
-    Decorator that adds a header before the function call
+    Decorator that adds a header before the function print out
     '''
     @wraps(funct)
     def add_header(*args, **kwargs):
@@ -57,19 +58,28 @@ def myLogging():
     logging.error('This is an error message')
 
 
-@heading
-def myEnums():
-    names = 'Thorsten Heike Hanna Frieda Otto Heinz'.split()
-    print(list(enumerate(names)))
-    print(list(enumerate(names, start=11)))
+# @unique
+class Colors(Enum):
+    '''
+    Having two enum members with the same name will cause an error.
+    But two enum members are allowed to have the same value. This kind of alias
+    '''
+    RED = 1
+    BLUE = 2
+    GREEN = 3
+    YELLOW = 4
+    PINK = 4        # <- OK, if no decorator @unique. This is an alias
+    # YELLOW = 5    # <- his will causes an error
 
 
 @heading
-def main():
-    pass
+def myEnum():
+    print(list(Colors))
+    for color in Colors:
+        print(color, ' has the value ', color.value)
 
 
 if __name__ == '__main__':
     myDict()
     myLogging()
-    myEnums()
+    myEnum()
