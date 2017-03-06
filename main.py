@@ -50,6 +50,44 @@ def myDict():
 
 
 @heading
+def myDataTypes():
+    # array
+    my_list = ['abcd', 786, 2.23, 'john', 70.2]    # elements can be added
+    print('List: ', my_list)
+    print('List: ', my_list[2:])
+    print('List: ', my_list[1:3])
+    my_list.append('Heros')
+    print('List: ', my_list)
+    print()
+
+    # same like list but you can add or change elements
+    my_tupel = ('abcd', 786, 2.23, 'john', 70.2)    # no elements can be added
+    print('Tupel: ', my_tupel)
+    print('Tupel: ', my_tupel[2:])
+    print('Tupel: ', my_tupel[1:3])
+    # my_tupel.append('frieda')     # <- this will cause an error
+    # my_tupel[0] = 'abcdefg'       # <- this will cause an error
+    print()
+
+    # dictionary
+    my_dict = {'1': 'Otto', 2: 'Heinz', 'pi': 3.414}
+    print('Dict: ', my_dict)
+    print('Dict: ', my_dict[2])
+    print('Dict: ', my_dict['pi'])
+    print()
+
+    # a set contains unique and immutable elements
+    my_set = {'Hamburg', 'München', 'Frankfurt', 'Berlin'}
+    print(my_set)
+    my_set.add('Lingen')
+    print(my_set)
+    # my_set.add(['Singen', 'Böhringen'])     # <- this will cause an error
+    my_frozenset = frozenset(my_set)
+    print(my_frozenset)
+    # my_frozenset.add('Radolfzell')      # <- this will cause an error
+
+
+@heading
 def myLogging():
     logging.basicConfig(format='%(asctime)s %(levelname)s %(funcName)s[%(lineno)d] - %(message)s', level=logging.DEBUG)  # nopep8
     logging.warning('This is a warning')
@@ -77,9 +115,35 @@ def myEnum():
     print(list(Colors))
     for color in Colors:
         print(color.name, ' has the value ', color.value)
+    print(color.PINK)
+    print(color.YELLOW)
+
+
+@heading
+def myMap():
+    # map iterator can only b used once!!!
+    my_map = map(lambda x: x * x, range(1, 11))
+    print(list(my_map))
+
+    # you can use more then one list
+    my_map = map(lambda x, y: x + y, range(1, 11), range(100, 111))
+    print(list(my_map))
+
+
+@heading
+def myFilter():
+    # filter
+    even_numbers = list(filter(lambda x: not(x % 2), range(1, 51)))
+    print(even_numbers)
+
+    odd_numbers = list(filter(lambda x: x % 2, range(1, 51)))
+    print(odd_numbers)
 
 
 if __name__ == '__main__':
     myDict()
     myLogging()
     myEnum()
+    myDataTypes()
+    myMap()
+    myFilter()
