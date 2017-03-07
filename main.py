@@ -25,8 +25,10 @@ def heading(funct):
     '''
     @wraps(funct)
     def add_header(*args, **kwargs):
-        print(funct.__name__.center(40))
-        print('-' * 40)
+        length = 60
+        print('\n' + '-' * length)
+        print(funct.__name__.center(length))
+        print('-' * length)
         funct(*args, **kwargs)
         print()
     return add_header
@@ -35,6 +37,9 @@ def heading(funct):
 @heading
 @timethis
 def myDict():
+    '''
+    Example for using dictionaries
+    '''
     # print('myDict'.center(30))
     # print('-' * 30)
     keys = 'Thorsten Heike Hanna Frieda Otto Heinz'.split()
@@ -51,6 +56,9 @@ def myDict():
 
 @heading
 def myDataTypes():
+    '''
+    Example or the data types in python
+    '''
     # array
     my_list = ['abcd', 786, 2.23, 'john', 70.2]    # elements can be added
     print('List: ', my_list)
@@ -89,6 +97,9 @@ def myDataTypes():
 
 @heading
 def myLogging():
+    '''
+    Example for logging
+    '''
     logging.basicConfig(format='%(asctime)s %(levelname)s %(funcName)s[%(lineno)d] - %(message)s', level=logging.DEBUG)  # nopep8
     logging.warning('This is a warning')
     logging.debug('This is a debug message')
@@ -99,28 +110,36 @@ def myLogging():
 # @unique
 class Colors(Enum):
     '''
+    class Enum
     Having two enum members with the same name will cause an error.
     But two enum members are allowed to have the same value. This kind of alias
     '''
     RED = 1
     BLUE = 2
     GREEN = 3
-    YELLOW = 4
+    YELLOW = 4.346
     PINK = 4        # <- OK, if no decorator @unique. This is an alias
     # YELLOW = 5    # <- his will causes an error
 
 
 @heading
 def myEnum():
-    print(list(Colors))
+    '''
+    Example for Enums
+    '''
+    print('Colors: ', list(Colors))
+    print('Interrate through Colors: ')
     for color in Colors:
         print(color.name, ' has the value ', color.value)
-    print(color.PINK)
-    print(color.YELLOW)
+    print(Colors.PINK)
+    print(Colors.YELLOW)
 
 
 @heading
 def myMap():
+    '''
+    Example for maps
+    '''
     # map iterator can only b used once!!!
     my_map = map(lambda x: x * x, range(1, 11))
     print(list(my_map))
@@ -132,12 +151,51 @@ def myMap():
 
 @heading
 def myFilter():
+    '''
+    Example for filter
+    '''
     # filter
     even_numbers = list(filter(lambda x: not(x % 2), range(1, 51)))
     print(even_numbers)
 
     odd_numbers = list(filter(lambda x: x % 2, range(1, 51)))
     print(odd_numbers)
+
+
+class Const(object):
+    '''
+    Example for constants. Constants are not xisting in python
+    '''
+
+    def __init__(self):
+        self.__timeout = 10000
+        self.__header = 'This is the header'
+        self.__pi = 3.414
+
+    @property
+    def TIMEOUT(self):
+        return self.__timeout
+
+    @property
+    def HEADER(self):
+        return self.__header
+
+    @property
+    def PI(self):
+        return self.__pi
+
+
+@heading
+def myConst():
+    const = Const()
+    print(const.PI)
+    print(const.HEADER)
+    print(const.TIMEOUT)
+    try:
+        const.TIMEOUT = 1       # <- you cant set attribute (no eter defined)
+    except AttributeError:
+        print('ups - AttributeError -> You cant set the atribute, because no setter is defined')
+    print('hihihi')
 
 
 if __name__ == '__main__':
@@ -147,3 +205,4 @@ if __name__ == '__main__':
     myDataTypes()
     myMap()
     myFilter()
+    myConst()
