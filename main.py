@@ -25,10 +25,10 @@ def heading(funct):
     '''
     @wraps(funct)
     def add_header(*args, **kwargs):
-        length = 60
-        print('\n' + '-' * length)
-        print(funct.__name__.center(length))
-        print('-' * length)
+        LENGTGH = 60
+        print('\n' + '-' * LENGTGH)
+        print(funct.__name__.center(LENGTGH))
+        print('-' * LENGTGH)
         funct(*args, **kwargs)
         print()
     return add_header
