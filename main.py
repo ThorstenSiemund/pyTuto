@@ -1,3 +1,4 @@
+from mymodule import main_timeit
 from pprint import pprint
 from functools import wraps
 from enum import Enum, unique
@@ -206,3 +207,4 @@ if __name__ == '__main__':
     myMap()
     myFilter()
     myConst()
+    main_timeit.main_timeit()
