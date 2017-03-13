@@ -2,10 +2,10 @@ import timeit
 import functools
 
 
-RANGE_SIZE = 100_000_000
-COUNT = 1_000_000
-REPEAT = 3
-USECS = 1_000_000
+RANGE_SIZE = 100_000_000        # range size
+COUNT = 1_000_000               # call per pass
+REPEAT = 3                      # number of passes
+USECS = 1_000_000               # usec per second
 
 
 def costly_func1():
