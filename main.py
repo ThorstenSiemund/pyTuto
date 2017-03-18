@@ -101,11 +101,17 @@ def myLogging():
     '''
     Example for logging
     '''
-    logging.basicConfig(format='%(asctime)s %(levelname)s %(funcName)s[%(lineno)d] - %(message)s', level=logging.DEBUG)  # nopep8
+    LOG_FILENAME = 'logging_example.log'
+
+    logging.basicConfig(format='%(asctime)s %(levelname)s %(funcName)s[%(lineno)d] - %(message)s',  # nopep8 E501
+                        filename=LOG_FILENAME, level=logging.DEBUG)
     logging.warning('This is a warning')
     logging.debug('This is a debug message')
     logging.fatal('This is a fatal message')
     logging.error('This is an error message')
+
+    # TODO: logging config by file
+    # TODO: rotating file handler
 
 
 # @unique
@@ -195,8 +201,48 @@ def myConst():
     try:
         const.TIMEOUT = 1       # <- you cant set attribute (no eter defined)
     except AttributeError:
-        print('ups - AttributeError -> You cant set the atribute, because no setter is defined')
-    print('hihihi')
+        print('ups - AttributeError -> You cant set the attribute, because no setter is defined')   # nopep8 E501
+
+
+@heading
+def myStringFormatting():
+    print('First argument: {0} - second argument: {1}'.format(47, 12))
+    print('First argument: {0:03d} - second argument: {1:7.2f}'.format(47, 12))
+
+    print('Precisions: {0:6.2f} - {0:6.8f}'.format(3.41481234))
+    print('Precisions: {0:{width}}'.format(123, width=6))
+    print('Values are: {0:+06d} {1:-06d}'.format(378, -378))
+    print("The value is {:,}".format(12334567))
+
+    print('{0:30s}'.format('This is a string'))
+    print('{0:>30s}'.format('This is also a string'))
+
+    print("\nThe capital of {province} is {capital}".format(province="Ontario", capital="Toronto"))    # nopep8 E501
+
+    data = dict(province='Germany', capital='Berlin')
+    print('The capital of {province} is {capital}'.format(**data))
+
+    capital_country = {'US': 'Washington',
+                       'Kanada': 'Ottawa',
+                       'Deutschland': 'Berlin',
+                       'Frankreich': 'Paris',
+                       'England': 'London',
+                       'Großbritannien': 'London',
+                       'Schweiz': 'Bern',
+                       'Österreich': 'Wien',
+                       'Niederlande': 'Amsterdam'}
+    print("\nCountries and their capitals:")
+    for c in capital_country:
+        format_string = c + ": {" + c + "}"
+        print(format_string.format(**capital_country))
+
+    print('\n')
+    print('"Training"'.center(20))
+    print('"Training"'.center(20, '_'))
+    print('"Training"'.ljust(20, '_'))
+    print('"Training"'.rjust(20, '_'))
+    account_number = "43447879"
+    print('Account number:', account_number.zfill(12))
 
 
 if __name__ == '__main__':
@@ -208,3 +254,4 @@ if __name__ == '__main__':
     myFilter()
     myConst()
     main_timeit.main_timeit()
+    myStringFormatting()
