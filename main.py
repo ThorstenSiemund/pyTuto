@@ -241,6 +241,7 @@ def myStringFormatting():
     print('"Training"'.center(20, '_'))
     print('"Training"'.ljust(20, '_'))
     print('"Training"'.rjust(20, '_'))
+
     account_number = "43447879"
     print('Account number:', account_number.zfill(12))
 
