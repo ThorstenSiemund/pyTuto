@@ -246,6 +246,80 @@ def myStringFormatting():
     print('Account number:', account_number.zfill(12))
 
 
+@heading
+def myArgsKwargs():
+
+    print('''
+Syntax                  Description
+--------------------------------------------------------------------------
+func(value)             Normal argument: matched by position
+func(name=value)        Keyword argument: matched by name
+func(*sequence)         Pass all object in sequence as individual positional arguments
+func(**dict)            Pass all key/value pairs in dict as individual keyword arguments
+def func(name)          Normal argument: matched any passed value by position or name
+def func(name=value)    Default argument value, if not passed in the call
+def func(*name)         Matches and collects remaining positional arguments in a tuple
+def func(**name)        Matches and collects remaining keyword arguments in a dictionary
+def func(*args, name)   Arguments that must be passed by keyword only in calls
+
+see: http://www.bogotobogo.com/python/python_functions_def.php
+''')
+
+    def fnc(*args, **kwargs):
+        print('{} {}'.format(args, kwargs))
+    
+    print('\n' * 2)
+    
+    print('fnc(*args, **kwargs)')
+    print('~' * 20)
+    print("{0:37s} {1:>3s}".format('fnc()', ' -> '), end=''), fnc()
+    print("{0:37s} {1:>3s}".format('fnc(1, 2, 3)', ' -> '), end=''), fnc(1, 2, 3)
+    print("{0:37s} {1:>3s}".format('fnc(1, 2, 3, "flask")', ' -> '), end=''), fnc(1, 2, 3, 'flask')
+    print("{0:37s} {1:>3s}".format('fnc(a=1, b=2, c=3)', ' -> '), end=''), fnc(a=1, b=2, c=3)
+    print("{0:37s} {1:>3s}".format('fnc(a=1, b=2, c=3, d="ansible")', ' -> '), end=''), fnc(a=1, b=2, c=3, d='ansible')
+    print("{0:37s} {1:>3s}".format('fnc(1, 2, 3, a=1, b=2, c=3)', ' -> '), end=''), fnc(1, 2, 3, a=1, b=2, c=3)
+
+    lst = [1, 2, 3]
+    tpl = (4, 5, 6)
+    dct = {'a': 7, 'b': 8, 'c': 9}
+    print("{0:37s} {1:>3s}".format('fnc(*lst, **dct)', ' -> '), end=''), fnc(*lst, **dct)
+    print("{0:37s} {1:>3s}".format('fnc(*tpl, **dct)', ' -> '), end=''), fnc(*tpl, **dct)
+    print("{0:37s} {1:>3s}".format('fnc(1, 2, *lst)', ' -> '), end=''), fnc(1, 2, *lst)
+    print("{0:37s} {1:>3s}".format('fnc(1, 2, *tpl)', ' -> '), end=''), fnc(1, 2, *tpl)
+    print("{0:37s} {1:>3s}".format('fnc("jupyter", **dct)', ' -> '), end=''), fnc('jupyter', **dct)
+    print("{0:37s} {1:>3s}".format('fnc(arg="django", **dct)', ' -> '), end=''), fnc(arg='django', **dct)
+    print("{0:37s} {1:>3s}".format('fnc(1, 2, *tpl, q="bottle", **dct)', ' -> '), end=''), fnc(1, 2, *tpl, q='bottle', **dct)
+    
+    print('\n' * 2)
+
+    def fnc2(arg1, arg2, *args, **kwargs):
+        print('{} {} {} {}'.format(arg1, arg2, args, kwargs))
+
+    print('fnc2(arg1, arg2, *args, **kwargs)')
+    print('~' * 35)
+    print("{0:37s} {1:>3s}".format('fnc2()', ' -> '), end=''), print('*** error *** -> cause not positional argument (arg1, arg2) is given')
+    print("{0:37s} {1:>3s}".format('fnc2(1, 2)', ' -> '), end=''), fnc2(1, 2)
+    print("{0:37s} {1:>3s}".format('fnc2(1, 2, 3, "haystack")', ' -> '), end=''), fnc2(1, 2, 3, 'haystack')
+    print("{0:37s} {1:>3s}".format('fnc2(arg1=1, arg2=2, c=3)', ' -> '), end=''), fnc2(arg1=1, arg2=2, c=3)
+    print("{0:37s} {1:>3s}".format('fnc2(arg1=1, arg2=2, c=3, d="Spark")', ' -> '), end=''), fnc2(arg1=1, arg2=2, c=3, d='Spark')
+    print("{0:37s} {1:>3s}".format('fnc2(1, 2, 3, a=1, b=2)', ' -> '), end=''), fnc2(1, 2, 3, a=1, b=2)
+    print("{0:37s} {1:>3s}".format('fnc2(*lst, **dct)', ' -> '), end=''), fnc2(*lst, **dct)
+    print("{0:37s} {1:>3s}".format('fnc2(*tpl, **dct)', ' -> '), end=''), fnc2(*tpl, **dct)
+    print("{0:37s} {1:>3s}".format('fnc2(1, 2, *tpl)', ' -> '), end=''), fnc2(1, 2, *tpl)
+    print("{0:37s} {1:>3s}".format('fnc2(1, *tpl, d="nltk")', ' -> '), end=''), fnc2(1, *tpl, d='nltk')
+    print("{0:37s} {1:>3s}".format('fnc2(1, 2, *tpl, d="scikit")', ' -> '), end=''), fnc2(1, 2, *tpl, d='scikit')
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
 if __name__ == '__main__':
     myDict()
     myLogging()
@@ -256,3 +330,4 @@ if __name__ == '__main__':
     myConst()
     main_timeit.main_timeit()
     myStringFormatting()
+    myArgsKwargs()
