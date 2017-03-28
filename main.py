@@ -267,9 +267,9 @@ see: http://www.bogotobogo.com/python/python_functions_def.php
 
     def fnc(*args, **kwargs):
         print('{} {}'.format(args, kwargs))
-    
+
     print('\n' * 2)
-    
+
     print('fnc(*args, **kwargs)')
     print('~' * 20)
     print("{0:37s} {1:>3s}".format('fnc()', ' -> '), end=''), fnc()
@@ -289,7 +289,7 @@ see: http://www.bogotobogo.com/python/python_functions_def.php
     print("{0:37s} {1:>3s}".format('fnc("jupyter", **dct)', ' -> '), end=''), fnc('jupyter', **dct)
     print("{0:37s} {1:>3s}".format('fnc(arg="django", **dct)', ' -> '), end=''), fnc(arg='django', **dct)
     print("{0:37s} {1:>3s}".format('fnc(1, 2, *tpl, q="bottle", **dct)', ' -> '), end=''), fnc(1, 2, *tpl, q='bottle', **dct)
-    
+
     print('\n' * 2)
 
     def fnc2(arg1, arg2, *args, **kwargs):
@@ -308,16 +308,6 @@ see: http://www.bogotobogo.com/python/python_functions_def.php
     print("{0:37s} {1:>3s}".format('fnc2(1, 2, *tpl)', ' -> '), end=''), fnc2(1, 2, *tpl)
     print("{0:37s} {1:>3s}".format('fnc2(1, *tpl, d="nltk")', ' -> '), end=''), fnc2(1, *tpl, d='nltk')
     print("{0:37s} {1:>3s}".format('fnc2(1, 2, *tpl, d="scikit")', ' -> '), end=''), fnc2(1, 2, *tpl, d='scikit')
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 
 if __name__ == '__main__':
